@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Welcome{% endblock %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block body %}
+    <div class="box-1">
+        <h1>New York Times Keyword Search</h1>
+        <h3>Please enter some search terms</h3>
+        <form action="" method="POST" name="welcome">
+
+            {{ form.csrf_token }}
+            {{ form.hidden_tag() }}
+
+            <p>Search terms:
+                {{ form.search_terms }}
+            </p>
+
+            {{ form.submit_form }}
+
+        </form>
+    </div>
+
+    
+{% endblock %}

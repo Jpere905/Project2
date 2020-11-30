@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block body %}
+    <h1>Thank you!</h1>
+    <form action="" method="POST" name="welcome">
+
+        <h2 class="results">Your results for {% for term in tokenized_words %}{{ term }}, {% endfor %} :</h2>
+        <a class="button" href="{{ url_for('welcomePage') }}">Return to homepage</a>
+        {% for item in nyt_requested_data %}
+            <div class="results">
+                <ul>
+                    <li>
+                        Headline: {{ item["headline"] }}
+                    </li>
+                    <li>
+                        Lead paragraph: {{ item["lead_para"] }}
+                    </li>
+                    <li>
+                        Top comment: {{ item["comment"] }}
+                    </li>
+                    <li>
+                        URL: {{ item["url"] }}
+                    </li>
+                </ul>
+            </div>
+
+        {% endfor %}
+
+    </form>
+{% endblock %}
